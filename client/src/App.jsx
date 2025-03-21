@@ -2,11 +2,12 @@ import { useState } from 'react'
 import './App.css'
 import Layout from './components/Layout'
 import { BrowserRouter, Route, Router, Routes } from 'react-router-dom'
-import Kokot from './components/Bazen'
+import Kokot from './components/Kokot'
 
 
 
 function App() {
+
   return (
     <BrowserRouter>
       <Routes>

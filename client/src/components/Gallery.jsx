@@ -1,7 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 
-export default function Bazen() {
+export default function Kokot() {
     const {id} = useParams()
 
        const handlePost = () => {
@@ -12,5 +12,3 @@ export default function Bazen() {
     <div>{id}</div>
   )
 }
-
-
