@@ -1,3 +1,19 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+div {
+    margin: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -17,7 +33,6 @@
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
-
 
 .card {
   padding: 2em;
