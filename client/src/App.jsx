@@ -1,21 +1,34 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import './styles/App.css'
-import Layout from './components/Restaurant'
-import Gallery from './pages/Gallery'
-import Home from './pages/Home'
-import Locations from './components/Locations'
+import React, { useState } from 'react';
+import Home from './pages/Home';
+import GalleryPage from './pages/Gallery';
+import LocationsPage from './pages/Locations';
+import RestaurantPage from './pages/Restaurant';
+import './styles/App.css';
 
-function App() {
+const App = () => {
+  const [currentPage, setCurrentPage] = useState('home');
+
+  const renderPage = () => {
+    switch (currentPage) {
+      case 'home':
+        return <Home setCurrentPage={setCurrentPage} />;
+      case 'gallery':
+        return <GalleryPage setCurrentPage={setCurrentPage} />;
+      case 'locations':
+        return <LocationsPage setCurrentPage={setCurrentPage} />;
+      case 'restaurant':
+        return <RestaurantPage setCurrentPage={setCurrentPage} />;
+      default:
+        return <Home setCurrentPage={setCurrentPage} />;
+    }
+  };
+
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/bazeny' element={<Layout />} />
-        <Route path='/bazeny/:id' element={<Gallery />} />
-        <Route path='/locations' element={<Locations />} />
-      </Routes>
-    </BrowserRouter>
-  )
-}
+    <div>
+      {renderPage()}
+    </div>
+  );
+};
 
-export default App
+
+export default App;
