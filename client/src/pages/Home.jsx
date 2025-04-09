@@ -56,21 +56,8 @@ const Home = ({ setCurrentPage }) => {
         </nav>
       </header>
       <main>
+      
         <section id="home">
-          <h2>Otevírací doba</h2>
-          <h2>Otevírací doba</h2>
-          <h2>Otevírací doba</h2>
-          <h2>Otevírací doba</h2>
-          <h2>Otevírací doba</h2>
-          <h2>Otevírací doba</h2>
-          <h2>Otevírací doba</h2>
-          <h2>Otevírací doba</h2>
-          <h2>Otevírací doba</h2>
-          <h2>Otevírací doba</h2>
-          <h2>Otevírací doba</h2>
-          <h2>Otevírací doba</h2>
-          <h2>Otevírací doba</h2>
-          <h2>Otevírací doba</h2>
           <h2>Rezervace dráhy</h2>
           <div className="reservation-table-container">
             <table className="reservation-table">
@@ -172,7 +159,7 @@ const Home = ({ setCurrentPage }) => {
             rel="noopener noreferrer"
           >
             <img
-              src="./client/public/images/2023_Facebook_icon.svg.png"
+              src="./client/public/images/footer/2023_Facebook_icon.svg.png"
               alt="Facebook"
             />
           </a>
@@ -182,7 +169,7 @@ const Home = ({ setCurrentPage }) => {
             rel="noopener noreferrer"
           >
             <img
-              src="./client/public/images/Instagram_logo_2022.svg.png"
+              src="./client/public/images/footer/Instagram_logo_2022.svg.png"
               alt="Instagram"
             />
           </a>
@@ -191,7 +178,7 @@ const Home = ({ setCurrentPage }) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src="./client/public/images/R.png" alt="TikTok" />
+            <img src="./client/public/images/footer/R.png" alt="TikTok" />
           </a>
         </div>
         <div className="newsletter">
