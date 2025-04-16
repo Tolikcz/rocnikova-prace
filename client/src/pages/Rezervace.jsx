@@ -1,7 +1,7 @@
-import React from "react";
-import "../styles/App.css";
+import React from 'react';
+import '../styles/App.css';
 
-
+const RezervacePage = ({ setCurrentPage }) => {
   const handleTimeClick = (time) => {
     setSelectedTime(time);
     setShowForm(true);
@@ -19,12 +19,12 @@ import "../styles/App.css";
 
   return (
     <div className="home-page">
-       <header>
+        <header>
         <h1>Umístění bazénu</h1>
         <nav>
           <ul>
             <li><a href="#home" onClick={() => setCurrentPage('o nas')}>O nás</a></li>
-            <li><a href="#home" onClick={() => setCurrentPage('rezervace')}>Rezervace dráhy</a></li>
+            <li><a href="#rezervace " onClick={() => setCurrentPage('rezervace')}>Rezervace dráhy</a></li>
             <li><a href="#gallery" onClick={() => setCurrentPage('galerie')}>Galerie</a></li>
             <li><a href="#locations" onClick={() => setCurrentPage('lokace')}>Lokace</a></li>
             <li><a href="#restaurant" onClick={() => setCurrentPage('restaurace')}>Restaurace</a></li>
@@ -136,6 +136,7 @@ import "../styles/App.css";
         </div>
       </footer>
     </div>
-  );
+  
+  )};
 
-export default Rezervace;
+export default RezervacePage;

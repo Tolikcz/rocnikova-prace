@@ -24,7 +24,7 @@ const Home = ({ setCurrentPage }) => {
   };
 
   return (
-    <div className="home-page">
+    <div>
        <header>
         <h1>Umístění bazénu</h1>
         <nav>
@@ -94,7 +94,7 @@ const Home = ({ setCurrentPage }) => {
         <section id="about">
           <h2>Užijte si relaxaci, pohyb i zábavu na jednom místě</h2>
           <p>
-            Vítáme vás na oficiálních stránkách našeho bazénu – ideálního místa
+            Vítáme vás na oficiálních stránkách našeho bazénu  ideálního místa
             pro odpočinek, sport i rodinné chvíle. Nabízíme moderní zázemí,
             příjemné prostředí a profesionální přístup. Ať už si chcete
             zaplavat, uvolnit se ve vířivce, nebo si užít den s dětmi, u nás si
@@ -102,16 +102,16 @@ const Home = ({ setCurrentPage }) => {
           </p>
           <h3>Co u nás najdete?</h3>
           <ul>
-            <li>Plavecký bazén – vhodný pro kondiční plavání i rekreační návštěvy</li>
-            <li>Dětský bazének – bezpečné brouzdaliště pro ty nejmenší</li>
-            <li>Vířivka a relax zóna – ideální místo k odpočinku</li>
-            <li>Parní sauna a finská sauna – pro milovníky saunování</li>
-            <li>Plavecké kurzy a aquafitness – pravidelné lekce pro děti i dospělé</li>
+            <li>Plavecký bazén  vhodný pro kondiční plavání i rekreační návštěvy</li>
+            <li>Dětský bazének  bezpečné brouzdaliště pro ty nejmenší</li>
+            <li>Vířivka a relax zóna  ideální místo k odpočinku</li>
+            <li>Parní sauna a finská sauna  pro milovníky saunování</li>
+            <li>Plavecké kurzy a aquafitness  pravidelné lekce pro děti i dospělé</li>
           </ul>
           <h3>Otevírací doba</h3>
           <p>
-            Pondělí – Pátek: 6:00 – 21:00<br />
-            Sobota – Neděle: 8:00 – 20:00<br />
+            Pondělí Pátek:  6:00  21:00<br />
+            Sobota  Neděle: 8:00  20:00<br />
             (Sledujte prosím náš rozpis hodin pro veřejnost a kurzy)
           </p>
           <h3>Ceník</h3>

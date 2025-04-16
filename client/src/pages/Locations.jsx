@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/App.css';
 
-const LocationsPage = ({ setCurrentPage }) => {
+const LokacePage = ({ setCurrentPage }) => {
   return (
     <div>
       <header>
@@ -84,4 +84,4 @@ const LocationsPage = ({ setCurrentPage }) => {
   );
 };
 
-export default LocationsPage;
+export default LokacePage;

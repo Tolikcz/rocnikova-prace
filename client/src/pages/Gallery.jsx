@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/App.css';
 
-const GalleryPage = ({ setCurrentPage }) => {
+const GaleriePage = ({ setCurrentPage }) => {
   const gallerySections = [
     {
       title: 'Bazény',
@@ -37,10 +37,10 @@ const GalleryPage = ({ setCurrentPage }) => {
         <nav>
           <ul>
             <li><a href="#home" onClick={() => setCurrentPage('o nas')}>O nás</a></li>
-            <li><a href="#home" onClick={() => setCurrentPage('rezervace')}>Rezervace dráhy</a></li>
-            <li><a href="#gallery" onClick={() => setCurrentPage('galerie')}>Galerie</a></li>
-            <li><a href="#locations" onClick={() => setCurrentPage('lokace')}>Lokace</a></li>
-            <li><a href="#restaurant" onClick={() => setCurrentPage('restaurace')}>Restaurace</a></li>
+            <li><a href="#rezervace" onClick={() => setCurrentPage('rezervace')}>Rezervace dráhy</a></li>
+            <li><a href="#galerie" onClick={() => setCurrentPage('galerie')}>Galerie</a></li>
+            <li><a href="#lokace" onClick={() => setCurrentPage('lokace')}>Lokace</a></li>
+            <li><a href="#restaurace" onClick={() => setCurrentPage('restaurace')}>Restaurace</a></li>
           </ul>
         </nav>
       </header>
@@ -86,4 +86,4 @@ const GalleryPage = ({ setCurrentPage }) => {
   );
 };
 
-export default GalleryPage;
+export default GaleriePage;

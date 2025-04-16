@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import Home from './pages/Home';
-import GalleryPage from './pages/Gallery';
-import LocationsPage from './pages/Locations';
-import RestaurantPage from './pages/Restaurant';
-import Rezervace from './pages/Rezervace';
+import GaleriePage from './pages/Gallery';
+import LokacePage from './pages/Locations';
+import RestauracePage from './pages/Restaurant';
+import RezervacePage from './pages/Rezervace';
 import './styles/App.css';
 
 const App = () => {
@@ -11,14 +11,16 @@ const App = () => {
 
   const renderPage = () => {
     switch (currentPage) {
-      case 'home':
+      case 'o nas':
         return <Home setCurrentPage={setCurrentPage} />;
-      case 'gallery':
-        return <GalleryPage setCurrentPage={setCurrentPage} />;
-      case 'locations':
-        return <LocationsPage setCurrentPage={setCurrentPage} />;
-      case 'restaurant':
-        return <RestaurantPage setCurrentPage={setCurrentPage} />;
+      case 'galerie':
+        return <GaleriePage setCurrentPage={setCurrentPage} />;
+      case 'lokace':
+        return <LokacePage setCurrentPage={setCurrentPage} />;
+      case 'rezervace':
+        return <RezervacePage setCurrentPage={setCurrentPage} />;
+        case 'restaurace':
+        return <RestauracePage setCurrentPage={setCurrentPage} />;
       default:
         return <Home setCurrentPage={setCurrentPage} />;
     }
