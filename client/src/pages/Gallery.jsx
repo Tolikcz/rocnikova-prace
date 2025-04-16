@@ -32,14 +32,15 @@ const GalleryPage = ({ setCurrentPage }) => {
 
   return (
     <div>
-      <header>
-        <h1>Galerie</h1>
+       <header>
+        <h1>Umístění bazénu</h1>
         <nav>
           <ul>
-            <li><a href="#home" onClick={() => setCurrentPage('home')}>Domů</a></li>
-            <li><a href="#gallery" onClick={() => setCurrentPage('gallery')}>Galerie</a></li>
-            <li><a href="#locations" onClick={() => setCurrentPage('locations')}>Lokace</a></li>
-            <li><a href="#restaurant" onClick={() => setCurrentPage('restaurant')}>Restaurace</a></li>
+            <li><a href="#home" onClick={() => setCurrentPage('o nas')}>O nás</a></li>
+            <li><a href="#home" onClick={() => setCurrentPage('rezervace')}>Rezervace dráhy</a></li>
+            <li><a href="#gallery" onClick={() => setCurrentPage('galerie')}>Galerie</a></li>
+            <li><a href="#locations" onClick={() => setCurrentPage('lokace')}>Lokace</a></li>
+            <li><a href="#restaurant" onClick={() => setCurrentPage('restaurace')}>Restaurace</a></li>
           </ul>
         </nav>
       </header>

@@ -3,6 +3,7 @@ import Home from './pages/Home';
 import GalleryPage from './pages/Gallery';
 import LocationsPage from './pages/Locations';
 import RestaurantPage from './pages/Restaurant';
+import Rezervace from './pages/Rezervace';
 import './styles/App.css';
 
 const App = () => {

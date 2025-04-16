@@ -1,12 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import "../styles/App.css";
 
-const Home = ({ setCurrentPage }) => {
-  const [showForm, setShowForm] = useState(false);
-  const [selectedTime, setSelectedTime] = useState("");
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [date, setDate] = useState("");
 
   const handleTimeClick = (time) => {
     setSelectedTime(time);
@@ -30,7 +24,7 @@ const Home = ({ setCurrentPage }) => {
         <nav>
           <ul>
             <li><a href="#home" onClick={() => setCurrentPage('o nas')}>O nás</a></li>
-            <li><a href="#rezervace" onClick={() => setCurrentPage('rezervace')}>Rezervace dráhy</a></li>
+            <li><a href="#home" onClick={() => setCurrentPage('rezervace')}>Rezervace dráhy</a></li>
             <li><a href="#gallery" onClick={() => setCurrentPage('galerie')}>Galerie</a></li>
             <li><a href="#locations" onClick={() => setCurrentPage('lokace')}>Lokace</a></li>
             <li><a href="#restaurant" onClick={() => setCurrentPage('restaurace')}>Restaurace</a></li>
@@ -90,55 +84,6 @@ const Home = ({ setCurrentPage }) => {
             </div>
           )}
         </section>
-
-        <section id="about">
-          <h2>Užijte si relaxaci, pohyb i zábavu na jednom místě</h2>
-          <p>
-            Vítáme vás na oficiálních stránkách našeho bazénu – ideálního místa
-            pro odpočinek, sport i rodinné chvíle. Nabízíme moderní zázemí,
-            příjemné prostředí a profesionální přístup. Ať už si chcete
-            zaplavat, uvolnit se ve vířivce, nebo si užít den s dětmi, u nás si
-            každý najde to své.
-          </p>
-          <h3>Co u nás najdete?</h3>
-          <ul>
-            <li>Plavecký bazén – vhodný pro kondiční plavání i rekreační návštěvy</li>
-            <li>Dětský bazének – bezpečné brouzdaliště pro ty nejmenší</li>
-            <li>Vířivka a relax zóna – ideální místo k odpočinku</li>
-            <li>Parní sauna a finská sauna – pro milovníky saunování</li>
-            <li>Plavecké kurzy a aquafitness – pravidelné lekce pro děti i dospělé</li>
-          </ul>
-          <h3>Otevírací doba</h3>
-          <p>
-            Pondělí – Pátek: 6:00 – 21:00<br />
-            Sobota – Neděle: 8:00 – 20:00<br />
-            (Sledujte prosím náš rozpis hodin pro veřejnost a kurzy)
-          </p>
-          <h3>Ceník</h3>
-          <p>
-            Nabízíme výhodné vstupné pro jednotlivce, rodiny i skupiny.<br />
-            Děti do 6 let zdarma.<br />
-            <a href="#pricing">Zobrazit celý ceník</a>
-          </p>
-          <h3>Služby navíc</h3>
-          <ul>
-            <li>Občerstvení a kavárna přímo u bazénu</li>
-            <li>Možnost pronájmu plaveckých drah</li>
-            <li>Dárkové poukazy</li>
-            <li>Wi-Fi zdarma</li>
-          </ul>
-          <h3>Najdete nás</h3>
-          <p>
-            📍 [Adresa bazénu]<br />
-            🅿️ Parkování zdarma<br />
-            🚆 Snadná dostupnost MHD
-          </p>
-          <p>
-            Těšíme se na vaši návštěvu! Přijďte si odpočinout, zasportovat nebo
-            si jen užít vodní radovánky. Váš komfort a spokojenost jsou pro nás
-            na prvním místě.
-          </p>
-        </section>
       </main>
       <footer>
         <div className="Left">
@@ -192,6 +137,5 @@ const Home = ({ setCurrentPage }) => {
       </footer>
     </div>
   );
-};
 
-export default Home;
+export default Rezervace;
