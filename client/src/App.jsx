@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Home from './pages/Home';
 import GaleriePage from './pages/Gallery';
 import LokacePage from './pages/Locations';
-import RestauracePage from './pages/Restaurant';
+import CenikPage from './pages/Cenik';
 import RezervacePage from './pages/Rezervace';
 import './styles/App.css';
 
@@ -19,8 +19,8 @@ const App = () => {
         return <LokacePage setCurrentPage={setCurrentPage} />;
       case 'rezervace':
         return <RezervacePage setCurrentPage={setCurrentPage} />;
-        case 'restaurace':
-        return <RestauracePage setCurrentPage={setCurrentPage} />;
+        case 'cenik':
+        return <CenikPage setCurrentPage={setCurrentPage} />;
       default:
         return <Home setCurrentPage={setCurrentPage} />;
     }

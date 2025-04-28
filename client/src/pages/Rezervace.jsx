@@ -1,142 +1,155 @@
-import React from 'react';
-import '../styles/App.css';
+import React, { useState, useEffect } from "react";
+import NavBar from "../components/NavBar";
+import Footer from "../components/Footer";
 
 const RezervacePage = ({ setCurrentPage }) => {
-  const handleTimeClick = (time) => {
+  const [existing, setExisting] = useState([]);
+  const [showForm, setShowForm] = useState(false);
+  const [selectedTime, setSelectedTime] = useState("");
+  const [selectedLane, setSelectedLane] = useState(null);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [date, setDate] = useState("");
+
+  useEffect(() => {
+    if (!date) return;
+    fetch(`http://localhost:3000/reservations?date=${date}`)
+      .then(res => {
+        if (!res.ok) throw new Error(`HTTP error ${res.status}`);
+        return res.json();
+      })
+      .then(data => {
+        setExisting(Array.isArray(data.payload) ? data.payload : []);
+      })
+      .catch(console.error);
+  }, [date]);
+
+  const handleTimeClick = (time, lane) => {
     setSelectedTime(time);
+    setSelectedLane(lane);
     setShowForm(true);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
-    alert(`Rezervace potvrzena pro ${name} na ${date} v ${selectedTime}`);
-    setShowForm(false);
-  };
-
-  const handleCloseForm = () => {
-    setShowForm(false);
+    fetch("http://localhost:3000/reservations", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ date, time: selectedTime, lane: selectedLane, name, email })
+    })
+      .then(res => {
+        if (!res.ok) {
+          if (res.status === 409) throw new Error("Tento termín už je obsazený.");
+          throw new Error(`HTTP error ${res.status}`);
+        }
+        return res.json();
+      })
+      .then(data => {
+        setExisting(prev => [...prev, data.payload]);
+        setShowForm(false);
+        setName("");
+        setEmail("");
+        alert("Vaše rezervace byla úspěšně potvrzena!"); 
+      })
+      .catch(err => {
+        console.error(err);
+        alert(err.message);
+      });
   };
 
   return (
-    <div className="home-page">
-        <header>
-        <h1>Umístění bazénu</h1>
-        <nav>
-          <ul>
-            <li><a href="#home" onClick={() => setCurrentPage('o nas')}>O nás</a></li>
-            <li><a href="#rezervace " onClick={() => setCurrentPage('rezervace')}>Rezervace dráhy</a></li>
-            <li><a href="#gallery" onClick={() => setCurrentPage('galerie')}>Galerie</a></li>
-            <li><a href="#locations" onClick={() => setCurrentPage('lokace')}>Lokace</a></li>
-            <li><a href="#restaurant" onClick={() => setCurrentPage('restaurace')}>Restaurace</a></li>
-          </ul>
-        </nav>
-      </header>
+    <div>
+      <NavBar setCurrentPage={setCurrentPage} />
       <main>
-        <section id="home">
+        <section id="rezervace">
           <h2>Rezervace dráhy</h2>
+          <div className="reservation-table-container">
+            <table className="reservation-table">
+              <thead>
+                <tr>
+                  <th>Čas</th>
+                  {[1, 2, 3, 4, 5].map(l => <th key={l}>Dráha {l}</th>)}
+                </tr>
+              </thead>
+              <tbody>
+                {[10, 11, 12, 13, 14, 15].map(hour => (
+                  <tr key={hour}>
+                    <td>{hour}:00</td>
+                    {[1, 2, 3, 4, 5].map(lane => {
+                      const timeStr = `${hour}:00`;
+                      const taken = existing.some(
+                        r => r.date === date && r.time === timeStr && r.lane === lane
+                      );
+                      return (
+                        <td key={lane}>
+                          <button
+                            className={`time-button${taken ? " taken" : ""}`}
+                            disabled={taken}
+                            onClick={() => handleTimeClick(timeStr, lane)}
+                          >
+                            {timeStr}
+                          </button>
+                        </td>
+                      );
+                    })}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="note">* Šedivé označené časy jsou již obsazené.</p>
+
           {showForm && (
             <div className="overlay">
-              <div className="reservation-form-container">
-                <button className="close-button" onClick={handleCloseForm}>
-                  X
-                </button>
-                <form onSubmit={handleSubmit} className="reservation-form">
-                  <h3>Rezervace na {selectedTime}</h3>
-                  <div>
+              <div className="reservation-popup">
+                <div className="reservation-form-container">
+                  <form onSubmit={handleSubmit} className="reservation-form">
+                    <h3>
+                      Rezervace na {selectedTime} (dráha {selectedLane})
+                    </h3>
                     <label>Jméno:</label>
                     <input
                       type="text"
                       value={name}
-                      onChange={(e) => setName(e.target.value)}
+                      onChange={e => setName(e.target.value)}
                       required
                     />
-                  </div>
-                  <div>
                     <label>Email:</label>
                     <input
                       type="email"
                       value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      onChange={e => setEmail(e.target.value)}
                       required
                     />
-                  </div>
-                  <div>
                     <label>Datum:</label>
                     <input
                       type="date"
                       value={date}
-                      onChange={(e) => setDate(e.target.value)}
+                      onChange={e => setDate(e.target.value)}
                       required
                     />
-                  </div>
-                  <div>
-                    <label>Čas:</label>
-                    <input type="time" value={selectedTime} readOnly />
-                  </div>
-                  <div className="form-buttons">
-                    <button type="submit">Rezervovat</button>
-                    <button type="button" onClick={handleCloseForm}>
-                      Zrušit
-                    </button>
-                  </div>
-                </form>
+                    <label>Čas a dráha:</label>
+                    <input
+                      type="text"
+                      value={`${selectedTime} (dráha ${selectedLane})`}
+                      readOnly
+                    />
+                    <div className="form-buttons">
+                      <button type="button" onClick={() => setShowForm(false)}>
+                        Zrušit
+                      </button>
+                      <button type="submit">Potvrdit rezervaci</button>
+                    </div>
+                  </form>
+                </div>
               </div>
             </div>
           )}
         </section>
       </main>
-      <footer>
-        <div className="Left">
-          <h3>Kontakt</h3>
-          <p>
-            <strong>Adresa:</strong> Ulice 123, Město
-          </p>
-          <p>
-            <strong>Telefon:</strong> +420 123 456 789
-          </p>
-          <p>
-            <strong>Email:</strong> info@bazennarezervace.cz
-          </p>
-        </div>
-        <div className="social-links">
-          <a
-            href="https://www.facebook.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src="./client/public/images/footer/2023_Facebook_icon.svg.png"
-              alt="Facebook"
-            />
-          </a>
-          <a
-            href="https://www.instagram.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src="./client/public/images/footer/Instagram_logo_2022.svg.png"
-              alt="Instagram"
-            />
-          </a>
-          <a
-            href="https://www.tiktok.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img src="./client/public/images/footer/R.png" alt="TikTok" />
-          </a>
-        </div>
-        <div className="newsletter">
-          <h3>Odebírejte novinky </h3>
-          <form>
-            <input type="email" placeholder="Váš email" required />
-            <button type="submit">Odeslat</button>
-          </form>
-        </div>
-      </footer>
+      <Footer />
     </div>
-  
-  )};
+  );
+};
 
 export default RezervacePage;
