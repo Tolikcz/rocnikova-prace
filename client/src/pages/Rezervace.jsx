@@ -21,6 +21,10 @@ const RezervacePage = ({ setCurrentPage }) => {
       .then(data => {
         setExisting(Array.isArray(data.payload) ? data.payload : []);
       })
+
+    fetch(`http://localhost:4000/reservations?date=${date}`)
+      .then(res => res.json())
+      .then(data => setExisting(data))
       .catch(console.error);
   }, [date]);
 
@@ -32,11 +36,14 @@ const RezervacePage = ({ setCurrentPage }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    fetch("http://localhost:3000/reservations", {
+
+    fetch("http://localhost:3000/reservations",  {
+
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ date, time: selectedTime, lane: selectedLane, name, email })
     })
+
       .then(res => {
         if (!res.ok) {
           if (res.status === 409) throw new Error("Tento termín už je obsazený.");
@@ -54,7 +61,15 @@ const RezervacePage = ({ setCurrentPage }) => {
       .catch(err => {
         console.error(err);
         alert(err.message);
-      });
+      })
+      .then(res => res.json())
+      .then(newReservation => {
+        setExisting(prev => [...prev, newReservation]);
+        setShowForm(false);
+        setName("");
+        setEmail("");
+      })
+      .catch(console.error);
   };
 
   return (
@@ -147,7 +162,7 @@ const RezervacePage = ({ setCurrentPage }) => {
           )}
         </section>
       </main>
-      <Footer />
+      <Footer setFooterDown={true} />
     </div>
   );
 };

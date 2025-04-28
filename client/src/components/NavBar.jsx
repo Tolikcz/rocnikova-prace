@@ -3,6 +3,7 @@ import '../styles/App.css';
 
 const NavBar = ({ setCurrentPage }) => (
   <header>
+
     <h1>Městský bazén</h1>
     <nav>
       <ul>

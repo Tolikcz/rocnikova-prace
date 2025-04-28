@@ -23,7 +23,7 @@ const LokacePage = ({ setCurrentPage }) => {
         </div>
       </main>
 
-      <Footer />
+      <Footer setFooterDown={true}/>
     </div>
   );
 };

@@ -38,7 +38,6 @@ exports.createReservation = async (req, res) => {
   }
 };
 
-
 exports.updateReservation = async (req, res) => {
   try {
     const updated = await Reservation.findByIdAndUpdate(

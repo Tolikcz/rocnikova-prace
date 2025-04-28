@@ -1,10 +1,20 @@
 import React from 'react';
+
 import '../styles/App.css'; 
 
-const Footer = () => {
+import '../styles/App.css'; 
+
+
+const Footer = ({setFooterDown}) => {
+  let style;
+  if (setFooterDown) {
+    style = { position: 'absolute', bottom: 0};
+  }
+    
   return (
-    <footer>
+    <footer style={style}>
       <div className="Left">
+
         <h2>Sociální sítě</h2>
       </div>
       <div className="social-links">

@@ -48,6 +48,7 @@ footer .Left, .social-links, .newsletter {
 
 .newsletter button {
   background-color: rgb(0, 112, 231);
+  background-color: rgba(0, 123, 255, 0.8);
   color: white;
   border: none;
   padding: 8px;
@@ -67,7 +68,6 @@ footer .Left, .social-links, .newsletter {
 }
 
 .home-page {
-  background-image: url('./client/public/imagesbazen.jpg');
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -121,6 +121,11 @@ footer {
   color: white;
   text-align: center;
   padding: 20px 0;
+  background-color: rgba(0, 123, 255, 0.8);
+  color: rgb(255, 255, 255);
+  text-align: center;
+  width: 100%;
+  bottom: 0;
 }
 footer .social-links a {
   color: rgb(255, 255, 255);
@@ -180,6 +185,7 @@ button.time-button:hover {
   background-color: #0056b3;
 }
 
+/* ---- OVERLAY + FORM ---- */
 .overlay {
   position: fixed;
   top: 0;
@@ -280,7 +286,6 @@ button.time-button:hover {
 .close-button:hover {
   background-color: #ff1c1c;
 }
-
 form div {
   margin-bottom: 15px;
 }
@@ -378,12 +383,16 @@ form div {
   text-decoration: underline;
 }
 .hero-section {
-  background-image: url('C:\Users\honzo\Desktop\rocnikova-prace\client\public\images\galerie\bazen.jpg');
+
+  background-image: url('');
+
+  background-image: url('../../public/images/galerie/bazen.jpg'); 
   background-size: cover;
   background-position: center;
   text-align: center;
   padding: 120px 20px;
   color: white;
+
 }
 
 .hero-section h1 {
@@ -445,7 +454,74 @@ form div {
   max-width: 500px;
 }
 
+.hero-section h1 {
+  font-size: 3em;
+  margin-bottom: 10px;
+}
 
+
+.hero-section p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.hero-section button {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  font-size: 1em;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.hero-section button:hover {
+  background-color: #0056b3;
+}
+
+.services-section {
+  padding: 60px 20px;
+  background-color: #f0f8ff;
+  text-align: center;
+}
+
+.services-grid {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.service-card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 250px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.info-section {
+  display: flex;
+  justify-content: space-around;
+  padding: 40px 20px;
+  background-color: #e0f7fa;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.info-section div {
+  max-width: 400px;
+  text-align: center;
+}
+
+footer {
+  text-align: center;
+  background-color: #007BFF;
+  color: white;
+  padding: 20px 0;
+}
 
 .gallery-section {
   padding: 40px 20px;
